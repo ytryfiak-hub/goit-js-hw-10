@@ -6,13 +6,10 @@ const catInfo = document.querySelector(".cat-info");
 const loader = document.querySelector(".loader");
 const errorMessage  = document.querySelector(".error");
 
-breedSelect.classList.add("is-hidden");
-errorMessage .classList.add("is-hidden");
-catInfo.classList.add("is-hidden");
-
 fetchBreeds()
 .then(breeds => {
     const markup = breeds
+    //Todo: use reduce instead of map
     .map(breed => {
         return`
         <option value="${breed.id}">
@@ -56,6 +53,7 @@ breedSelect.addEventListener("change", event => {
       ${cat[0].breeds[0].temperament}
       </p>
       `;
+      //Todo: Replace innerHTML with insertAdjacement 
       catInfo.innerHTML = markup;
 
        catInfo.classList.remove("is-hidden");
